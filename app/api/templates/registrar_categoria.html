@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="col">
+        <div class="row">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

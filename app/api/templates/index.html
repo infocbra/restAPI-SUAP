@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <section class="Categorias">
+        <div class="col">
+            <div class="row">
+                <h2>Categorias de Atendimento</h2>
+            {% if data.categoria %}
+                {% for categ in data.categoria %}
+                    <p class="item">
+                        {{ categ.nome }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <p class="item-error"> Nenhuma Categoria Cadastrado!</p>
+            {% endif %}
+            </div>
+        </div>
+    </section>
+
+
+    <section class="Tipos">
+            <div class="col">
+                <div class="row">
+                    <h2>Tipos de Atendimento</h2>
+                {% if data.tipo %}
+                    {% for tipo in data.tipo %}
+                        <p class="item">
+                            {{ tipo.nome }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <p class="item-error"> Nenhum Tipo Cadastrado!</p>
+                {% endif %}
+                </div>
+            </div>
+        </section>
+
+
+
+    <section class="Status">
+            <div class="col">
+                <div class="row">
+                    <h2>Status de Atendimento</h2>
+            {% if data.status %}
+                {% for status in data.status %}
+                    <p class="item">
+                        {{ status.nome }}
+                    </p>
+                {% endfor %}
+            {% else %}
+            <p class="item-error"> Nenhum Status Cadastrado!</p>
+            {% endif %}
+                </div>
+            </div>
+        </section>
+</body>
+</html>
