@@ -38,7 +38,7 @@ class Guiche(models.Model):
 
 class Atendimento(models.Model):
     id_atendimento = models.IntegerField(primary_key=True, null=False)
-    hora_data_ini = models.DateTimeField(default=datetime.now(), blank=True)
+    hora_data_ini = models.DateTimeField()#linha modificada por DanielB
     hora_data_fim = models.DateTimeField() # Acrescentar horário para termino
     fk_atendente = models.ForeignKey(Atendente, on_delete=models.CASCADE)
     fk_guiche = models.ForeignKey(Guiche, on_delete=models.CASCADE)
