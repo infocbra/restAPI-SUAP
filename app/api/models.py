@@ -9,9 +9,15 @@ class Tipo(models.Model):
     id_tipo = models.IntegerField(primary_key=True, null=False)
     nome = models.CharField(max_length=80, null=False)
 
+    def __str__(self):
+        return self.nome
+
 class Categoria(models.Model):
     id_categoria = models.IntegerField(primary_key=True, null=False)
     nome = models.CharField(max_length=80, null=False)
+
+    def __str__(self):
+        self.nome
 
 class Senha(models.Model):
     id_senha = models.IntegerField(primary_key=True, null=False)
@@ -20,6 +26,8 @@ class Senha(models.Model):
     fk_status = models.ForeignKey(StatusSenha, on_delete=models.CASCADE)
     senha = models.IntegerField(null=False)
     hora_data = models.DateTimeField(default=datetime.now(), blank=True)
+
+
 
 class Campus(models.Model):
     id_campus = models.IntegerField(primary_key=True, null=False)
@@ -43,3 +51,6 @@ class Atendimento(models.Model):
     fk_atendente = models.ForeignKey(Atendente, on_delete=models.CASCADE)
     fk_guiche = models.ForeignKey(Guiche, on_delete=models.CASCADE)
     fk_senha = models.ForeignKey(Senha, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.hora_data_ini,self.hora_data_fim
