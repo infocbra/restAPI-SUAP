@@ -27,8 +27,6 @@ class Senha(models.Model):
     senha = models.IntegerField(null=False)
     hora_data = models.DateTimeField(default=datetime.now(), blank=True)
 
-
-
 class Campus(models.Model):
     id_campus = models.IntegerField(primary_key=True, null=False)
     Campo = models.CharField(max_length=30, null=False)
