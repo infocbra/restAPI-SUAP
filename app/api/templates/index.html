@@ -1,44 +1,52 @@
 {% extends 'base.html' %}
+{% block title %}Principal{% endblock title%}
 {% block body %}
-    <section class="Categorias">
-        <h2>Categorias de Atendimento</h2>
-        {% if data.categoria %}
-            {% for categ in data.categoria %}
-                <p class="item">
-                    {{ categ.nome }}
-                </p>
-            {% endfor %}
-        {% else %}
-            <p class="item-error"> Nenhuma Categoria Cadastrado!</p>
-        {% endif %}
-    </section>
-
-
-    <section class="Tipos">
-        <h2>Tipos de Atendimento</h2>
-        {% if data.tipo %}
-            {% for tipo in data.tipo %}
-                <p class="item">
-                    {{ tipo.nome }}
-                </p>
-            {% endfor %}
-        {% else %}
-            <p class="item-error"> Nenhum Tipo Cadastrado!</p>
-        {% endif %}
-    </section>
-
-
-
-    <section class="Status">
-        <h2>Status de Atendimento</h2>
-        {% if data.status %}
-            {% for status in data.status %}
-                <p class="item">
-                    {{ status.nome }}
-                </p>
-            {% endfor %}
-        {% else %}
-            <p class="item-error"> Nenhum Status Cadastrado!</p>
-        {% endif %}
-    </section>
+<div class="dashboard">
+    <div class="row">
+        <section class="Categorias" >
+                <h2>Categorias de Atendimento</h2>
+                {% if data.categoria %}
+                    {% for categ in data.categoria %}
+                        <p class="item">
+                            {{ categ.nome }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <p class="item-error"> Nenhuma Categoria Cadastrado!</p>
+                {% endif %}
+                <a href="{% url 'registrar_categoria' %}" class="link-button"> Adiconar Categorias</a>
+            </section>
+            
+            
+        <section class="Tipos">
+            <h2>Tipos de Atendimento</h2>
+            {% if data.tipo %}
+                {% for tipo in data.tipo %}
+                    <p class="item">
+                        {{ tipo.nome }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <p class="item-error"> Nenhum Tipo Cadastrado!</p>
+            {% endif %}
+            <a href="{% url 'registrar_tipo' %}" class="link-button"> Adiconar Tipos</a>
+        </section>
+    </div>
+    <div class="row">
+            <section class="Status">
+                <h2>Status de Atendimento</h2>
+                {% if data.status %}
+                    {% for status in data.status %}
+                        <p class="item">
+                            {{ status.nome }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <p class="item-error"> Nenhum Status Cadastrado!</p>
+                {% endif %}
+                <a href="{% url 'registrar_status' %}" class="link-button"> Adiconar Status</a>
+            </section>
+    </div> 
+</div>
+    
 {% endblock body %}

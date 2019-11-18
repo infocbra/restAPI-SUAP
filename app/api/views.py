@@ -58,7 +58,7 @@ class StatusView(TemplateView):
 
 
 class TipoView(TemplateView):
-    template_name = "registar_tipo.html"
+    template_name = "registrar_tipo.html"
     initial = {'key': 'value'}
     form_class = TipoForm
 

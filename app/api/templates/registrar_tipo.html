@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base_form.html' %}
+{% block title %}Registro | Tipo{% endblock title%}
 {% block body %}
     <div class="container">
         <div class="col">
-            <h2 class="form-title">Registro de Tipo</h2>
+            <h2 class="form-title">Registro de Tipos</h2>
             <form method="POST" class="form">
                 {% csrf_token %}
                 {{form.as_p}}

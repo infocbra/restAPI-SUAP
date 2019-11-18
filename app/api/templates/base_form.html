@@ -9,13 +9,21 @@
     <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet"> 
 </head>
-<body>
+<body class="body">
+    <nav class="nav-bar">
+        <ul class="pages">
+            <li><a href="{% url 'registrar_tipo' %}">Registrar tipos</a></li>
+            <li><a href="{% url 'registrar_categoria' %}">Registrar categorias</a></li>
+            <li><a href="{% url 'registrar_status' %}">Registrar status</a></li>
+            <li><a href="/">Painel de Atendimento</a></li>
+        </ul>
+    </nav>
     <div class="row">
         <div class="col">
                 {% block body %}
                 {% endblock body %}
         </div>
     </div>
-    <script src="{% static 'scripts/main.js'%}"></script>
+    
 </body>
 </html>
