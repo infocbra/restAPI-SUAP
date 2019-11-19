@@ -24,12 +24,11 @@ class SenhaSerializer(serializers.ModelSerializer):
         if Senha.objects.all():
             last_num = Senha.objects.all().order_by('-id')[0].senha
             nova_senha = validated_data['fk_tipo'].nome[0] + validated_data['fk_categoria'].nome[0] + str(int(last_num[2:]) + 1)
-            senha = Senha(fk_tipo = validated_data['fk_tipo'], fk_categoria= validated_data['fk_categoria'], fk_status= StatusSenha.objects.get(nome='Na fila'), senha= nova_senha)
         else:
             nova_senha = validated_data['fk_tipo'].nome[0] + validated_data['fk_categoria'].nome[0] + "01"
-            tipo = validated_data['fk_tipo']
-            cat = validated_data['fk_categoria']
-            senha = Senha(fk_tipo = validated_data['fk_tipo'], fk_categoria= validated_data['fk_categoria'], fk_status= StatusSenha.objects.get(nome='Na fila'), senha= nova_senha)
+        tipo = validated_data['fk_tipo']
+        cat = validated_data['fk_categoria']
+        senha = Senha(fk_tipo = validated_data['fk_tipo'], fk_categoria= validated_data['fk_categoria'], fk_status= StatusSenha.objects.get(nome='Na fila'), senha= nova_senha)
             
         senha.save()
         return senha
