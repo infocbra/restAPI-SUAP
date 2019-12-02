@@ -87,7 +87,7 @@ class Atendente(models.Model):
 
 class Guiche(models.Model):
     num_guiche = models.CharField(max_length=10, null=False)
-    status = models.BooleanField(verbose_name=_('ativo'), default=True)
+    status = models.BooleanField(verbose_name=_('Em atendimento'), default=False)
     campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -23,11 +23,9 @@ class SenhaSerializer(serializers.ModelSerializer):
         """Create a new user with encripted password and return it"""
         if Senha.objects.all():
             last_num = Senha.objects.all().order_by('-id')[0].senha
-            nova_senha = validated_data['tipo'].nome[0] + validated_data['categoria'].nome[0] + str(int(last_num[2:]) + 1)
+            nova_senha = validated_data['tipo'].nome[0] + validated_data['categoria'].nome[0] + '0' + str(int(last_num[2:]) + 1)
         else:
             nova_senha = validated_data['tipo'].nome[0] + validated_data['categoria'].nome[0] + "01"
-        tipo = validated_data['tipo']
-        cat = validated_data['categoria']
         senha = Senha(tipo = validated_data['tipo'], categoria= validated_data['categoria'], status= StatusSenha.objects.get(nome='Na fila'), senha= nova_senha)
             
         senha.save()
