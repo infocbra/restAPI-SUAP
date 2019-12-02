@@ -1,5 +1,5 @@
 from django import forms
-from api.models import StatusSenha, Tipo, Categoria, Guiche, Campus, Atendente
+from api.models import StatusSenha, Tipo, Categoria, Guiche, Campus, Atendente, Atendimento
 
 class CategoriaForm(forms.ModelForm):
     class Meta:

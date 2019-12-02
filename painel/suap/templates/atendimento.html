@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Atendimento{% endblock title%}
+
+{% block body %}
+<h1 class="">Atendimento</h1>
+<main class="col grid" id="grid" role="grid">
+
+    <div class="container">
+
+        {% if data.senha %}
+                {% for senha in data.senha %}
+                    <p class="item">
+                        {{ senha.senha }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <h3 class="item-error"> Nenhuma Senha Cadastrada!</h3>
+            {% endif %}
+
+    </div>
+
+{% endblock body %}
