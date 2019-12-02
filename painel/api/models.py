@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
 
@@ -40,41 +41,65 @@ class User(AbstractBaseUser, PermissionsMixin):
 class StatusSenha(models.Model):
     nome = models.CharField(max_length=80, null=False, default='Na fila')
 
+    def __str__(self):
+        return self.nome
+
 
 class Tipo(models.Model):
     nome = models.CharField(max_length=80, null=False)
+
+    def __str__(self):
+        return self.nome
 
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=80, null=False)
 
+    def __str__(self):
+        return self.nome
+
 
 class Senha(models.Model):
-    fk_tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
-    fk_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    fk_status = models.ForeignKey(StatusSenha, on_delete=models.CASCADE)
+    tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    status = models.ForeignKey(StatusSenha, on_delete=models.CASCADE)
     senha = models.CharField(max_length = 255, null=False)
-    hora_data = models.DateTimeField(default=timezone.now(), blank=True)
+    hora_data = models.DateTimeField(default=timezone.now, blank=True)
+
+    def __str__(self):
+        return self.senha
 
 
 class Campus(models.Model):
-    Campo = models.CharField(max_length=30, null=False)
+    campi = models.CharField(max_length=30, null=False)
+
+    def __str__(self):
+        return self.campi
 
 
 class Atendente(models.Model):
     Siape = models.IntegerField()
     Nome = models.CharField(max_length=30, null=False)
 
+    def __str__(self):
+        return self.Siape
+
 
 class Guiche(models.Model):
     num_guiche = models.CharField(max_length=10, null=False)
-    status = models.BooleanField()
-    fk_campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
+    status = models.BooleanField(verbose_name=_('ativo'), default=True)
+    campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.num_guiche
 
 
 class Atendimento(models.Model):
     hora_data_ini = models.DateTimeField()#linha modificada por DanielB
     hora_data_fim = models.DateTimeField() # Acrescentar horário para termino
-    fk_atendente = models.ForeignKey(Atendente, on_delete=models.CASCADE)
-    fk_guiche = models.ForeignKey(Guiche, on_delete=models.CASCADE)
-    fk_senha = models.ForeignKey(Senha, on_delete=models.CASCADE)
+    atendente = models.ForeignKey(Atendente, on_delete=models.CASCADE)
+    guiche = models.ForeignKey(Guiche, on_delete=models.CASCADE)
+    senha = models.ForeignKey(Senha, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.hora_data_ini

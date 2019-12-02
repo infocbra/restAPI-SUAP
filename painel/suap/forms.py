@@ -27,14 +27,16 @@ class GuicheForm(forms.ModelForm):
     class Meta:
         model = Guiche
         fields = [
-            'num_guiche','status'
+            'num_guiche',
+            'status', 
+            'campus',
         ]
 
 class CampusForm(forms.ModelForm):
     class Meta:
         model = Campus
         fields = [
-            'Campo'
+            'campi'
         ]
 
 class AtendenteForm(forms.ModelForm):

@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
+from django.conf import settings
 
 # models 
 from api.models import Categoria, StatusSenha, Senha, Tipo, Guiche, Campus, Atendente
@@ -18,7 +19,7 @@ class IndexView(TemplateView):
         return render(request, self.template_name, {'data': {
             'categoria': Categoria.objects.all(), 
             'status': StatusSenha.objects.all(),
-            'tipo': Tipo.objects.all()
+            'tipo': Tipo.objects.all(),
             }})
 
 
@@ -98,7 +99,12 @@ class GuicheView(TemplateView):
         form = self.form_class(request.POST)
         if form.is_valid():
             dados_form = form.data
-            guiche = Guiche(num_guiche= dados_form['num_guiche'],status=dados_form['status'])
+            campus = Campus.objects.get(id=dados_form['campus'])
+            if dados_form['status'] == 'on':
+                status = True
+            else:
+                status = False
+            guiche = Guiche(num_guiche= dados_form['num_guiche'],status=status, campus=campus)
             guiche.save()
             return HttpResponseRedirect('/')
         return render(request, self.template_name, {'form':form})

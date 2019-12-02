@@ -15,14 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_swagger.views import get_swagger_view
-
-schema_view = get_swagger_view(title='Painel API Documentation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('suap.urls')),
     path('api/user/', include('user.urls')),
     path('api/senha/', include('api.urls')),
-    path('api/docs/', schema_view),
 ]

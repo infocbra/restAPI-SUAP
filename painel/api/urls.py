@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from api import views
 
 router = DefaultRouter()
-router.register('all', views.SenhaViewSet)
+router.register('', views.SenhaViewSet)
 router.register('categoria', views.CategoriaViewSet)
 router.register('tipo', views.TipoViewSet)
 
