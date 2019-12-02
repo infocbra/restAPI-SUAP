@@ -146,3 +146,13 @@ class AtendenteView(TemplateView):
             atendente.save()
             return HttpResponseRedirect('/')
         return render(request, self.template_name, {'form':form})
+
+class AtendimentoView(TemplateView):
+    """Criando view para Tipo"""
+    template_name = "atendimento.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
