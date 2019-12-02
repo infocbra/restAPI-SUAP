@@ -1,7 +1,7 @@
 # Projeto_PPI (Painel de Senhas)
 
  **Professor Orientador**: Fábio Henrique M. Oliveira
- 
+
  **Disciplina**: Programação para Internet II (PPI-II)
 
  **Alunos** : Daniel Barros e Levi Alves
@@ -28,7 +28,7 @@
 
 ### Uso da API
 #### Endpoints:
-    * /api/senha
+     /api/senha
         - POST
             - Cria uma nova senha;
             obs: Necessita de uma categoria e um tipo. 
@@ -36,10 +36,10 @@
         - GET
             - Retorna todas as senhas existentes.
 
-    * /api/categoria
+     /api/categoria
         - GET
             - Retorna todas as categorias existentes no banco.
 
-    * /api/tipo 
+     /api/tipo 
         - GET
             - Retorna todos os tipos existentes no banco.
