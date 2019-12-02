@@ -1,32 +1,32 @@
 # Projeto_PPI (Painel de Senhas)
 
-## Professor Orientador: Fábio Henrique M. Oliveira
-## Disciplina: Programação para Internet II (PPI-II)
+ **Professor Orientador**: Fábio Henrique M. Oliveira
+ **Disciplina**: Programação para Internet II (PPI-II)
 
-## Alunos : Daniel Barros e Levi Alves
+ **Alunos** : Daniel Barros e Levi Alves
 
-## Objetivo do Projeto:
-### Implementar API e telas para controle de senhas.
+ **Objetivo do Projeto**:
+ Implementar API e telas para controle de senhas.
 
-## Estrutura de Arquivos
+### Estrutura de Arquivos
  * demo: Exemplo do uso do Django rest framework;
  * Modelo: Modelo Relacional com estrutura do banco de dados;
  * painel: projeto Django;
  * panelEnv: ambiente virtual python;
  * presentation: Apresentação powerpoint sobre API's.
 
-## Estrutura de Arquivos Django
+### Estrutura de Arquivos Django
  * 
  *
  *
 
-## Requisitos:
+### Requisitos:
     - Python <= 3.6;
     - Django; 
     - Django rest framework;
 
-## Uso da API
-### Endpoints:
+### Uso da API
+#### Endpoints:
     * /api/senha
         - POST
             - Cria uma nova senha;
