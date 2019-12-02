@@ -3,6 +3,8 @@
 ## Professor Orientador: Fábio Henrique M. Oliveira
 ## Disciplina: Programação para Internet II (PPI-II)
 
+## Alunos : Daniel Barros e Levi Alves
+
 ## Objetivo do Projeto:
 ### Implementar API e telas para controle de senhas.
 
@@ -24,7 +26,6 @@
     - Django rest framework;
 
 ## Uso da API
---
 ### Endpoints:
     * /api/senha
         - POST
