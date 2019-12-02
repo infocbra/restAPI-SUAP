@@ -3,7 +3,7 @@ from api.models import StatusSenha, Tipo, Categoria, Guiche, Campus, Atendente
 
 class CategoriaForm(forms.ModelForm):
     class Meta:
-        model = StatusSenha
+        model = Categoria
         fields = [
             'nome'
         ]
