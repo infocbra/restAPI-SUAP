@@ -1,13 +1,9 @@
-const check = () => {
-    if (!('serviceWorker' in navigator)) {
-      throw new Error('No Service Worker support!');
-    }
-    if (!('PushManager' in window)) {
-      throw new Error('No Push API Support!');
-    }
+self.addEventListener('active', async () => {
+  try{
+    const options = {};
+    const subscription = await self.registration.pushManager.subscribe(options)
+    console.log(JSON.stringify(subscription))
+  } catch (err) {
+    console.log('Error', err);
   }
-  const main = () => {
-    check();
-  }
-  
-  main();
+})

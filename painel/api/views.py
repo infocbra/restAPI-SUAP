@@ -2,6 +2,7 @@
 from rest_framework import viewsets, mixins
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser, JSONParser, FormParser
 
 # serializers
 from api import serializers
@@ -18,7 +19,8 @@ class SenhaViewSet(viewsets.GenericViewSet,
     permission_classes = (IsAuthenticated,)
     queryset = Senha.objects.all()
     serializer_class = serializers.SenhaSerializer
-
+    parser_classes = (MultiPartParser, JSONParser, FormParser,)
+    
     def perform_create(self, serializer):
         """Register a new patient"""
         serializer.save()

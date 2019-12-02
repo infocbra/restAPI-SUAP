@@ -105,10 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-WEBPUSH_SETTINGS = {
-   "VAPID_PUBLIC_KEY": "BJRYUN4Sr0LPhLCj09gPmDUjaoUzj49vJHOOkO7TYOOwBl3nNnbUG04XuKJi4uduCRxwaSBX83bAVlxVxvZZBcY",
-   "VAPID_PRIVATE_KEY": "sJwJIFyrjPhY6rpr8qSwhuY1uItaBF2AWVD5eHn7ops",
-   "VAPID_ADMIN_EMAIL": "danielbarr16@gmail.com"
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
 }
 
 
