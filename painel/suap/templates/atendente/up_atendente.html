@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Registro | Atendente{% endblock title%}
+{% block body %}
+    <div class="container">
+        <div class="col">
+            <h2 class="form-title">Atualizar Atendente</h2>
+            <form method="POST" class="form">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="button">Atualizar</button>
+            </form>
+        </div>
+    </div>     
+{% endblock body %}

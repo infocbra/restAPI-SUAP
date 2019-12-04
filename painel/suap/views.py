@@ -1,29 +1,16 @@
 # render templates, telas de acesso
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.urls import reverse_lazy
 
 # models 
-from api.models import Categoria, StatusSenha, Senha, Tipo, Guiche, Campus, Atendente
+import api.models as models 
 
 # forms 
-from suap.forms import CategoriaForm, TipoForm, StatusForm, GuicheForm, CampusForm, AtendenteForm
-
-
-class RegistrarView(TemplateView):
-    """View da tela inicial"""
-    template_name = "registro.html"
-
-    def get(self, request):
-        return render(request, self.template_name, {'data': {
-            'categoria': Categoria.objects.all(), 
-            'status': StatusSenha.objects.all(),
-            'tipo': Tipo.objects.all(),
-            'guiche': Guiche.objects.all(),
-            'campus': Campus.objects.all(),
-            'atendente': Atendente.objects.all()
-            }})
+import suap.forms as forms 
 
 
 class IndexView(TemplateView):
@@ -31,116 +18,137 @@ class IndexView(TemplateView):
     template_name = "index.html"
 
 
-class CategoriaView(TemplateView):
+class RegistrarView(TemplateView):
+    """View da tela inicial"""
+    template_name = "public/registro.html"
+
+    def get(self, request):
+        return render(request, self.template_name, {'data': {
+            'categoria': models.Categoria.objects.all(), 
+            'status': models.StatusSenha.objects.all(),
+            'tipo': models.Tipo.objects.all(),
+            'guiche': models.Guiche.objects.all(),
+            'campus': models.Campus.objects.all(),
+            'atendente': models.Atendente.objects.all()
+            }})
+
+
+class CategoriaCreate(CreateView):
     """Criando view para Categoria"""
-    template_name = "forms/categoria.html"
-    initial = {'key':'value'}
-    form_class = CategoriaForm
-
-    def get(self, request):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form':form})
-
-    def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            dados_form = form.data
-            categoria = Categoria(nome= dados_form['nome'])
-            categoria.save()
-            return HttpResponseRedirect('/')
-
-        return render(request, self.template_name, {'form':form})
+    model = models.Categoria
+    template_name = "categoria/nova_categoria.html"
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
 
 
-class StatusView(TemplateView):
+class CategoriaUpdate(UpdateView):
+    model = models.Categoria
+    template_name = "categoria/up_categoria.html"
+    context_object_name = 'categorias'
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
+
+
+class CategoriaDelete(DeleteView):
+    model = models.Categoria
+    template_name = "categoria/del_categoria.html"
+    context_object_name = 'categorias'
+    success_url = reverse_lazy('registrar')
+
+
+class StatusCreate(CreateView):
     """Criando view para Status"""
-    template_name = "forms/status.html"
-    initial = {'key': 'value'}
-    form_class = StatusForm
-
-    def get(self, request):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form': form})
-
-    def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            dados_form = form.data
-            status = StatusSenha(nome= dados_form['nome'])
-            status.save()
-            return HttpResponseRedirect('/')
-        return render(request, self.template_name, {'form': form})
+    model = models.StatusSenha
+    template_name = "forms/form.html"
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
 
 
+class StatusUpdate(UpdateView):
+    model = models.StatusSenha
+    template_name = 'forms/form.html'
+    context_object_name = 'status'
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
 
-class TipoView(TemplateView):
+
+class StatusDelete(DeleteView):
+    model = models.StatusSenha
+    template_name = 'registro.html'
+    success_url = reverse_lazy('registrar')
+
+
+class TipoCreate(CreateView):
     """Criando view para Tipo"""
-    template_name = "forms/tipo.html"
-    initial = {'key': 'value'}
-    form_class = TipoForm
+    model = models.Tipo
+    template_name = "forms/form.html"
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
 
-    def get(self, request):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form':form})
 
-    
-    def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            dados_form = form.data
-            tipo = Tipo(nome= dados_form['nome'])
-            tipo.save()
-            return HttpResponseRedirect('/')
-        return render(request, self.template_name, {'form':form})
+class TipoUpdate(UpdateView):
+    model = models.Tipo
+    template_name = 'forms/form.html'
+    context_object_name = 'status'
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
 
-class GuicheView(TemplateView):
+
+class TipoDelete(DeleteView):
+    model = models.Tipo
+    template_name = 'registro.html'
+    success_url = reverse_lazy('registrar')
+
+
+class GuicheCreate(CreateView):
     """Criando view para Tipo"""
-    template_name = "forms/guiche.html"
-    initial = {'key': 'value'}
-    form_class = GuicheForm
+    model = models.Guiche
+    template_name = "guiche/novo_guiche.html"
+    fields = ['num_guiche', 'status', 'campus']
+    success_url = reverse_lazy('registrar')
 
-    def get(self, request):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form':form})
 
-    def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            dados_form = form.data
-            campus = Campus.objects.get(id=dados_form['campus'])
-            if dados_form['status'] == 'on':
-                status = True
-            else:
-                status = False
-            guiche = Guiche(num_guiche= dados_form['num_guiche'],status=status, campus=campus)
-            guiche.save()
-            return HttpResponseRedirect('/')
-        return render(request, self.template_name, {'form':form})
+class GuicheUpdate(UpdateView):
+    model = models.Guiche
+    template_name = "guiche/up_guiche.html"
+    fields = ['num_guiche', 'status', 'campus']
+    success_url = reverse_lazy('registrar')
 
-class CampusView(TemplateView):
+
+class GuicheDelete(DeleteView):
     """Criando view para Tipo"""
-    template_name = "forms/campus.html"
-    initial = {'key': 'value'}
-    form_class = CampusForm
+    model = models.Guiche
+    template_name = "guiche/del_guiche.html"
+    success_url = reverse_lazy('registrar')
 
-    def get(self, request):
-        form = self.form_class(initial=self.initial)
-        return render(request, self.template_name, {'form':form})
 
-    def post(self, request):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            dados_form = form.data
-            campus = Campus(Campo= dados_form['Campo'])
-            campus.save()
-            return HttpResponseRedirect('/')
-        return render(request, self.template_name, {'form':form})
+class CampusCreate(CreateView):
+    """Criando view para Tipo"""
+    model = models.Campus
+    template_name = "campus/novo_campus.html"
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
+
+
+class CampusUpdate(UpdateView):
+    model = models.Campus
+    template_name = "campus/up_campus.html"
+    fields = ['nome']
+    success_url = reverse_lazy('registrar')
+
+
+class CampusDelete(DeleteView):
+    """Criando view para Tipo"""
+    model = models.Campus
+    template_name = "guiche/del_campus.html"
+    success_url = reverse_lazy('registrar')
+
 
 class AtendenteView(TemplateView):
     """Criando view para Tipo"""
     template_name = "forms/atendente.html"
     initial = {'key': 'value'}
-    form_class = AtendenteForm
+    form_class = forms.AtendenteForm
 
     def get(self, request):
         form = self.form_class(initial=self.initial)
@@ -150,10 +158,11 @@ class AtendenteView(TemplateView):
         form = self.form_class(request.POST)
         if form.is_valid():
             dados_form = form.data
-            atendente = Atendente(Siape= dados_form['Siape'],Nome=dados_form['Nome'])
+            atendente = models.Atendente(Siape= dados_form['Siape'],Nome=dados_form['Nome'])
             atendente.save()
             return HttpResponseRedirect('/')
         return render(request, self.template_name, {'form':form})
+
 
 class AtendimentoView(TemplateView):
     """Criando view para Tipo"""

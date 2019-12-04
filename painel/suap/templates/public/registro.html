@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Registro{% endblock title%}
+{% block body %}
+<main class="col grid" id="grid" role="grid">
+        <div class="card">
+            <h2>Categorias - Atendimento</h2>
+            {% if data.categoria %}
+                {% for categ in data.categoria %}
+                    <div class="item">
+                        <p>{{ categ.nome }}</p>
+                        <p><a href="{% url 'atualizar_categoria' categ.id %}">atualizar</a></p>
+                        <p><a href="{% url 'deletar_categoria' categ.id %}">deletar</a></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3 class="item-error"> Nenhuma Categoria Cadastrada!</h3>
+            {% endif %}
+            <a href="{% url 'adicionar_categoria' %}" >
+                    <button class="button">Adiconar Categoria</button>
+                </a>
+        </div>
+        <div class="card">
+                <h2>Status - Atendimento</h2>
+                {% if data.status %}
+                    {% for status in data.status %}
+                        <div class="item">
+                            <p>{{ status.nome }}</p>
+                            <p><a href="{% url 'atualizar_categoria' status.id %}">atualizar</a></p>
+                            <p><a href="{% url 'deletar_categoria' status.id %}">deletar</a></p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="item-error"> Nenhum Status Cadastrado!</h3>
+                {% endif %}
+                <a href="{% url 'adicionar_status' %}" >
+                        <button class="button">Adiconar Status</button>
+                    </a>
+            </div>
+
+            <div class="card">
+                    <h2>Tipos - Atendimento</h2>
+                    {% if data.tipo %}
+                        {% for tipo in data.tipo %}
+                            <div class="item">
+                                <p>{{ tipo.nome }}</p>
+                                <p><a href="{% url 'atualizar_categoria' tipo.id %}">atualizar</a></p>
+                                <p><a href="{% url 'deletar_categoria' tipo.id %}">deletar</a></p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h3 class="item-error"> Nenhum Tipo Cadastrado!</h3>
+                    {% endif %}
+                    <a href="{% url 'adicionar_tipo' %}" >
+                            <button class="button">Adiconar Tipo</button>
+                        </a>
+                </div>
+
+                <div class="card">
+                        <h2>Guichês - Atendimento</h2>
+                        {% if data.guiche %}
+                            {% for guiche in data.guiche %}
+                                <div class="item">
+                                    <p>{{ guiche.num_guiche }}</p>
+                                    <p><a href="{% url 'atualizar_guiche' guiche.id %}">atualizar</a></p>
+                                    <p><a href="{% url 'deletar_guiche' guiche.id %}">deletar</a></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <h3 class="item-error"> Nenhum Guichê Cadastrado!</h3>
+                        {% endif %}
+                        <a href="{% url 'adicionar_guiche' %}" >
+                                <button class="button">Adiconar Guichê</button>
+                            </a>
+                    </div>
+
+                    <div class="card">
+                            <h2>Campi</h2>
+                            {% if data.campus %}
+                                {% for campus in data.campus %}
+                                    <div class="item">
+                                        <p>{{ campus.nome }}</p>
+                                        <p><a href="{% url 'atualizar_campus' campus.id %}">atualizar</a></p>
+                                        <p><a href="{% url 'deletar_campus' campus.id %}">deletar</a></p>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <h3 class="item-error"> Nenhum Guichê Cadastrado!</h3>
+                            {% endif %}
+                            <a href="{% url 'adicionar_campus' %}" >
+                                    <button class="button">Adiconar Guichê</button>
+                                </a>
+                        </div>
+
+</main>
+{% endblock body %}

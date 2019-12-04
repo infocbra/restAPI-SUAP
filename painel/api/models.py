@@ -71,10 +71,10 @@ class Senha(models.Model):
 
 
 class Campus(models.Model):
-    campus = models.CharField(max_length=30, null=False)
+    nome = models.CharField(max_length=30, null=False)
 
     def __str__(self):
-        return self.campus
+        return self.nome
 
 
 class Atendente(models.Model):
