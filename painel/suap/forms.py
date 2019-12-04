@@ -36,7 +36,7 @@ class CampusForm(forms.ModelForm):
     class Meta:
         model = Campus
         fields = [
-            'campi'
+            'campus'
         ]
 
 class AtendenteForm(forms.ModelForm):

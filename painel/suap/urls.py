@@ -1,6 +1,7 @@
 from django.urls import path
 from suap import views
 
+
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('registrar/categoria', views.CategoriaView.as_view(), name='registrar_categoria'),
@@ -9,5 +10,6 @@ urlpatterns = [
     path('registrar/guiche', views.GuicheView.as_view(), name='registrar_guiche'),
     path('registrar/campus', views.CampusView.as_view(), name='registrar_campus'),
     path('registrar/atendente', views.AtendenteView.as_view(), name='registrar_atendente'),
-    path('/atendimento', views.AtendimentoView.as_view(), name='atendimento'),
+    path('atendimento', views.AtendimentoView.as_view(), name='atendimento'),
+    path('registrar', views.RegistrarView.as_view(), name='registrar'),
 ]

@@ -67,14 +67,14 @@ class Senha(models.Model):
     hora_data = models.DateTimeField(default=timezone.now, blank=True)
 
     def __str__(self):
-        return self.senha
+        return self.senha, self.hora_data
 
 
 class Campus(models.Model):
-    campi = models.CharField(max_length=30, null=False)
+    campus = models.CharField(max_length=30, null=False)
 
     def __str__(self):
-        return self.campi
+        return self.campus
 
 
 class Atendente(models.Model):

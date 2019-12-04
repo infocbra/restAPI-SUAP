@@ -10,12 +10,19 @@
     <link href="https://fonts.googleapis.com/css?family=Signika&display=swap" rel="stylesheet"> 
 </head>
 <body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'index' %}">Principal</a></li>
+            <li><a href="{% url 'atendimento' %}">Atendimento</a></li>
+            <li><a href="{% url 'registrar' %}">Registro</a></li>
+            <li><a href="{% url 'index' %}">Login</a></li>
+        </ul>
+    </nav>
     <div class="col">
         <div class="row">
                 {% block body %}
                 {% endblock body %}
         </div>
     </div>
-    <script src="{% static 'scripts/index.js'%}"></script>
 </body>
 </html>

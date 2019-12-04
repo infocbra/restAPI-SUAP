@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}Registro{% endblock title%}
+{% block body %}
+<main class="col grid" id="grid" role="grid">
+        <div class="card">
+            <h2>Categorias Atendimento</h2>
+            {% if data.categoria %}
+                {% for categ in data.categoria %}
+                    <p class="item">
+                        {{ categ.nome }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <h3 class="item-error"> Nenhuma Categoria Cadastrada!</h3>
+            {% endif %}
+            <a href="{% url 'registrar_categoria' %}" >
+                    <button class="button">Adiconar Categoria</button>
+                </a>
+        </div>
+        <div class="card">
+            <h2>Status Atendimento</h2>
+            {% if data.status %}
+                {% for stat in data.status %}
+                    <p class="item">
+                        {{ stat.nome }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <h3 class="item-error"> Nenhum Status Cadastrado!</h3>
+            {% endif %}
+            <a href="{% url 'registrar_status' %}" >
+                <button class="button">Adiconar Status</button>
+            </a>
+        </div>
+
+        <div class="card">
+                <h2>Tipos Atendimento</h2>
+                {% if data.tipo %}
+                    {% for tipo in data.tipo %}
+                        <p class="item">
+                            {{ tipo.nome }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="item-error"> Nenhum Tipo Cadastrado!</h3>
+                {% endif %}
+                <a href="{% url 'registrar_tipo' %}" >
+                        <button class="button">Adiconar Tipo</button>
+                    </a>
+        </div>
+
+        <div class="card">
+                <h2>Guichês</h2>
+                {% if data.guiche %}
+                    {% for guiche in data.guiche %}
+                        <p class="item">
+                            {{ guiche.nome }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="item-error"> Nenhum Guiche Cadastrado!</h3>
+                {% endif %}
+                <a href="{% url 'registrar_guiche' %}" >
+                        <button class="button">Adiconar Guiche</button>
+                    </a>
+        </div>
+
+        <div class="card">
+                <h2>Campi</h2>
+                {% if data.campus %}
+                    {% for campus in data.campus %}
+                        <p class="item">
+                            {{ campus.nome }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <h3 class="item-error"> Nenhum Campi Cadastrado!</h3>
+                {% endif %}
+                <a href="{% url 'registrar_guiche' %}" >
+                        <button class="button">Adiconar Campus</button>
+                    </a>
+        </div>
+
+</main>
+{% endblock body %}

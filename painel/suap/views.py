@@ -11,21 +11,29 @@ from api.models import Categoria, StatusSenha, Senha, Tipo, Guiche, Campus, Aten
 from suap.forms import CategoriaForm, TipoForm, StatusForm, GuicheForm, CampusForm, AtendenteForm
 
 
-class IndexView(TemplateView):
+class RegistrarView(TemplateView):
     """View da tela inicial"""
-    template_name = "index.html"
+    template_name = "registro.html"
 
     def get(self, request):
         return render(request, self.template_name, {'data': {
             'categoria': Categoria.objects.all(), 
             'status': StatusSenha.objects.all(),
             'tipo': Tipo.objects.all(),
+            'guiche': Guiche.objects.all(),
+            'campus': Campus.objects.all(),
+            'atendente': Atendente.objects.all()
             }})
+
+
+class IndexView(TemplateView):
+    """View da tela inicial"""
+    template_name = "index.html"
 
 
 class CategoriaView(TemplateView):
     """Criando view para Categoria"""
-    template_name = "categoria.html"
+    template_name = "forms/categoria.html"
     initial = {'key':'value'}
     form_class = CategoriaForm
 
@@ -46,7 +54,7 @@ class CategoriaView(TemplateView):
 
 class StatusView(TemplateView):
     """Criando view para Status"""
-    template_name = "status.html"
+    template_name = "forms/status.html"
     initial = {'key': 'value'}
     form_class = StatusForm
 
@@ -67,7 +75,7 @@ class StatusView(TemplateView):
 
 class TipoView(TemplateView):
     """Criando view para Tipo"""
-    template_name = "tipo.html"
+    template_name = "forms/tipo.html"
     initial = {'key': 'value'}
     form_class = TipoForm
 
@@ -87,7 +95,7 @@ class TipoView(TemplateView):
 
 class GuicheView(TemplateView):
     """Criando view para Tipo"""
-    template_name = "guiche.html"
+    template_name = "forms/guiche.html"
     initial = {'key': 'value'}
     form_class = GuicheForm
 
@@ -111,7 +119,7 @@ class GuicheView(TemplateView):
 
 class CampusView(TemplateView):
     """Criando view para Tipo"""
-    template_name = "campus.html"
+    template_name = "forms/campus.html"
     initial = {'key': 'value'}
     form_class = CampusForm
 
@@ -130,7 +138,7 @@ class CampusView(TemplateView):
 
 class AtendenteView(TemplateView):
     """Criando view para Tipo"""
-    template_name = "atendente.html"
+    template_name = "forms/atendente.html"
     initial = {'key': 'value'}
     form_class = AtendenteForm
 
