@@ -4,20 +4,21 @@ from suap import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('registrar', views.RegistrarView.as_view(), name='registrar'),
+    path('atendimento', views.AtendimentoView.as_view(), name='atendimento'),
 ]
 
 # Adicionando caminhos para CRUD Categorias
 urlpatterns += [
-    path('registrar/categoria', views.CategoriaCreate.as_view(), name='adicionar_categoria'),
-    path('registrar/categoria/<int:pk>/atualizar/', views.CategoriaUpdate.as_view(), name='atualizar_categoria'),
-    path('registrar/<int:pk>/deletar/', views.CategoriaDelete.as_view(), name='deletar_categoria'),    
+    path('categoria/adicionar', views.CategoriaCreate.as_view(), name='adicionar_categoria'),
+    path('categoria/<int:pk>/atualizar/', views.CategoriaUpdate.as_view(), name='atualizar_categoria'),
+    path('categoria/<int:pk>/deletar/', views.CategoriaDelete.as_view(), name='deletar_categoria'),    
 ]
 
 # Adicionando caminhos para CRUD Status
 urlpatterns += [
-    path('registrar/status', views.StatusCreate.as_view(), name='adicionar_status'),
-    path('registrar/status/<int:pk>/atualizar/', views.StatusUpdate.as_view(), name='atualizar_status'),
-    path('registrar/status/<int:pk>/deletar/', views.StatusDelete.as_view(), name='deletar_status'),    
+    path('status/adicionar', views.StatusCreate.as_view(), name='adicionar_status'),
+    path('status/<int:pk>/atualizar/', views.StatusUpdate.as_view(), name='atualizar_status'),
+    path('status/<int:pk>/deletar/', views.StatusDelete.as_view(), name='deletar_status'),    
 ]
 
 # Adicionando caminhos para CRUD Tipo
@@ -41,7 +42,9 @@ urlpatterns += [
     path('guiche/<int:pk>/deletar/', views.GuicheDelete.as_view(), name='deletar_guiche'),    
 ]
 
+# Adicionando caminhos para CRUD Atendente
 urlpatterns += [
-    path('registrar/atendente', views.AtendenteView.as_view(), name='registrar_atendente'),
-    path('atendimento', views.AtendimentoView.as_view(), name='atendimento'),
+    path('atendente/adicionar', views.AtendenteCreate.as_view(), name='registrar_atendente'),
+    path('atendente/<int:pk>/atualizar/', views.AtendenteUpdate.as_view(), name='atualizar_guiche'),
+    path('atendente/<int:pk>/deletar/', views.AtendenteDelete.as_view(), name='deletar_guiche'),    
 ]

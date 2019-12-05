@@ -43,5 +43,5 @@ class AtendenteForm(forms.ModelForm):
     class Meta:
         model = models.Atendente
         fields = [
-            'Siape','Nome'
+            'siape','nome'
         ]

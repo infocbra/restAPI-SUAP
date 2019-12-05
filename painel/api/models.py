@@ -78,8 +78,8 @@ class Campus(models.Model):
 
 
 class Atendente(models.Model):
-    Siape = models.IntegerField()
-    Nome = models.CharField(max_length=30, null=False)
+    siape = models.IntegerField()
+    nome = models.CharField(max_length=30, null=False)
 
     def __str__(self):
         return self.Siape

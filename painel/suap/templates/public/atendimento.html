@@ -3,22 +3,26 @@
 {% block title %}Atendimento{% endblock title%}
 
 {% block body %}
-<h1 class="">Atendimento</h1>
 <main class="col grid" id="grid" role="grid">
 
-    <div class="container">
-
+    <div class="container col-align-items">
+            <h1 class="">Senha</h1>
         {% if data.senha %}
                 {% for senha in data.senha %}
-                    <p class="item">
+                    <p class="senha">
                         {{ senha.senha }}
                     </p>
                 {% endfor %}
-            {% else %}
-                <h3 class="item-error"> Nenhuma Senha Cadastrada!</h3>
             {% endif %}
-
-    </div>
+            <div class="buttons">
+                <a href="{% url 'atendimento' %}" >
+                        <button class="button">Chamar senha novamente</button>
+                    </a>
+                <a href="{% url 'atendimento' %}" >
+                        <button class="button">Chamar nova senha</button>
+                    </a>
+            </div>
+</div>
     </main>
 
 {% endblock body %}
