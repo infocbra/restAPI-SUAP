@@ -6,6 +6,8 @@
 
  **Alunos** : Daniel Barros e Levi Alves
 
+ **Link para o sistema** : http://danielb.pythonanywhere.com/
+ 
  **Objetivo do Projeto**:
  Implementar API e telas para controle de senhas.
 
@@ -36,10 +38,21 @@
         - GET
             - Retorna todas as senhas existentes.
 
-     /api/categoria
+     /api/senha/categoria
         - GET
             - Retorna todas as categorias existentes no banco.
 
-     /api/tipo 
+     /api/senha/tipo 
         - GET
             - Retorna todos os tipos existentes no banco.
+
+    /api/user/create 
+        - POST
+            - Cria um usuário e a senha para acesso ao token da API.
+    
+    /api/user/token 
+        - POST
+            - Acesso com o usuário já cadastrado para a geração do token.
+    
+#### Parser Types Endpoints:
+    - x-www-former-urlencoded
