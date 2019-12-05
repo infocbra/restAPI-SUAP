@@ -8,16 +8,18 @@
 
     <div class="container">
 
-        {% if data.senha %}
-                {% for senha in data.senha %}
+        {% if senha and status %}
                     <p class="item">
-                        {{ senha.senha }}
+                        <p>{{senha}}</p>
+                        <p>{{status}}</p>
                     </p>
-                {% endfor %}
+        <button id="getSenha" class="button">Chamar nova senha</button>
             {% else %}
                 <h3 class="item-error"> Nenhuma Senha Cadastrada!</h3>
             {% endif %}
 
     </div>
-
+    <script>
+        const button =
+    </script>
 {% endblock body %}

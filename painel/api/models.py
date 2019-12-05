@@ -67,7 +67,7 @@ class Senha(models.Model):
     hora_data = models.DateTimeField(default=timezone.now, blank=True)
 
     def __str__(self):
-        return self.senha
+        return '{},{}'.format(self.senha, self.status)
 
 
 class Campus(models.Model):

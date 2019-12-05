@@ -2,10 +2,11 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
-from django.conf import settings
+from django.utils import timezone
+#from django.conf import settings
 
 # models 
-from api.models import Categoria, StatusSenha, Senha, Tipo, Guiche, Campus, Atendente
+from api.models import Categoria, StatusSenha, Senha, Tipo, Guiche, Campus, Atendente, Atendimento
 
 # forms 
 from suap.forms import CategoriaForm, TipoForm, StatusForm, GuicheForm, CampusForm, AtendenteForm
@@ -150,9 +151,24 @@ class AtendenteView(TemplateView):
 class AtendimentoView(TemplateView):
     """Criando view para Tipo"""
     template_name = "atendimento.html"
+    guiche = 1
+    now = timezone.now
 
     def get(self, request):
-        return render(request, self.template_name)
+        senhas = Senha.objects.all().order_by('hora_data')[0]
+        senha, status =  str(senhas).split(',')
+
+        print(senha, status)
+        return render(request, self.template_name, {'senha': senha, 'status': status})
+
 
     def post(self, request):
-        return render(request, self.template_name)
+        senha_obj = Senha.objects.filter(status='Na fila').order_by('-hora_data')[0]
+        senha, status = str(senha_obj).split(',')
+        senha_obj = Senha.objects.filter(senha=senha)
+        senha_obj.status = StatusSenha.objects.get(nome='Em atendimento')
+        senha_obj.save()
+        atendimento = Atendimento()
+
+        response = None
+        return response
