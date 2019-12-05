@@ -1,30 +1,30 @@
 from django import forms
-from api.models import StatusSenha, Tipo, Categoria, Guiche, Campus, Atendente, Atendimento
+import api.models as models
 
 class CategoriaForm(forms.ModelForm):
     class Meta:
-        model = StatusSenha
+        model = models.Categoria
         fields = [
             'nome'
         ]
 
 class TipoForm(forms.ModelForm):
     class Meta:
-        model = Tipo
+        model = models.Tipo
         fields = [
             'nome'
         ]
 
 class StatusForm(forms.ModelForm):
     class Meta:
-        model = StatusSenha
+        model = models.StatusSenha
         fields = [
             'nome'
         ]
 
 class GuicheForm(forms.ModelForm):
     class Meta:
-        model = Guiche
+        model = models.Guiche
         fields = [
             'num_guiche',
             'status', 
@@ -33,14 +33,14 @@ class GuicheForm(forms.ModelForm):
 
 class CampusForm(forms.ModelForm):
     class Meta:
-        model = Campus
+        model = models.Campus
         fields = [
-            'campi'
+            'nome'
         ]
 
 class AtendenteForm(forms.ModelForm):
     class Meta:
-        model = Atendente
+        model = models.Atendente
         fields = [
-            'Siape','Nome'
+            'siape','nome'
         ]

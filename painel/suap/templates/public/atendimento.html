@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Atendimento{% endblock title%}
+
+{% block body %}
+<main class="col grid" id="grid" role="grid">
+
+    <div class="container col-align-items">
+            <h1 class="">Senha</h1>
+        {% if data.senha %}
+                {% for senha in data.senha %}
+                    <p class="senha">
+                        {{ senha.senha }}
+                    </p>
+                {% endfor %}
+            {% endif %}
+            <div class="buttons">
+                <a href="{% url 'atendimento' %}" >
+                        <button class="button">Chamar senha novamente</button>
+                    </a>
+                <a href="{% url 'atendimento' %}" >
+                        <button class="button">Chamar nova senha</button>
+                    </a>
+            </div>
+</div>
+    </main>
+
+{% endblock body %}

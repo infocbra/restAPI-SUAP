@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Registro | Campus{% endblock title%}
+{% block title %}Registro | Guichê{% endblock title%}
 {% block body %}
     <div class="container">
         <div class="col">
-            <h2 class="form-title">Registro de Campus</h2>
+            <h2 class="form-title">Registrar Guichê</h2>
             <form method="POST" class="form">
                 {% csrf_token %}
                 {{form.as_p}}

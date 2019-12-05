@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Registro{% endblock title%}
+{% block body %}
+{% load static %}
+<main class="col grid" id="grid" role="grid">
+        <div class="card">
+                <h2>Categorias - Atendimento</h2>
+                {% if data.categoria %}
+                    {% for categoria in data.categoria %}
+                        <div class="item">
+                            <p>{{ categoria.nome }}</p>
+                            <p><a href="{% url 'atualizar_categoria' categoria.id %}"><img class="icon-tools" src="{% static 'img/edit.svg'%}" alt="atualizar"></a></p>
+                            <p><a href="{% url 'deletar_categoria' categoria.id %}"><img class="icon-tools" src="{% static 'img/trash.svg'%}" alt="deletar"></a></p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="item-error"> Nenhuma categoria cadastrada!</p>
+                {% endif %}
+                <a href="{% url 'adicionar_categoria' %}" >
+                        <button class="button">Adiconar categoria</button>
+                    </a>
+            </div>
+            <div class="card">
+                    <h2>Tipos - Atendimento</h2>
+                    {% if data.tipo %}
+                        {% for tipo in data.tipo %}
+                            <div class="item">
+                                <p>{{ tipo.nome }}</p>
+                                <p><a href="{% url 'atualizar_tipo' tipo.id %}"><img class="icon-tools" src="{% static 'img/edit.svg'%}" alt="atualizar"></a></p>
+                                <p><a href="{% url 'deletar_tipo' tipo.id %}"><img class="icon-tools" src="{% static 'img/trash.svg'%}" alt="deletar"></a></p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="item-error"> Nenhum tipo cadastrado!</p>
+                    {% endif %}
+                    <a href="{% url 'adicionar_tipo' %}" >
+                            <button class="button">Adiconar tipo</button>
+                        </a>
+                </div>
+
+                <div class="card">
+                        <h2>Status - Atendimento</h2>
+                        {% if data.status %}
+                            {% for status in data.status %}
+                                <div class="item">
+                                    <p>{{ status.nome }}</p>
+                                    <p><a href="{% url 'atualizar_status' status.id %}"><img class="icon-tools" src="{% static 'img/edit.svg'%}" alt="atualizar"></a></p>
+                                    <p><a href="{% url 'deletar_status' status.id %}"><img class="icon-tools" src="{% static 'img/trash.svg'%}" alt="deletar"></a></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="item-error"> Nenhum status cadastrado!</p>
+                        {% endif %}
+                        <a href="{% url 'adicionar_tipo' %}" >
+                                <button class="button">Adiconar tipo</button>
+                            </a>
+                    </div>
+        
+                <div class="card">
+                        <h2>Guichês - Atendimento</h2>
+                        {% if data.guiche %}
+                            {% for guiche in data.guiche %}
+                                <div class="item">
+                                    <p>{{ guiche.nome }}</p>
+                                    <p><a href="{% url 'atualizar_guiche' guiche.id %}"><img class="icon-tools" src="{% static 'img/edit.svg'%}" alt="atualizar"></a></p>
+                                    <p><a href="{% url 'deletar_guiche' guiche.id %}"><img class="icon-tools" src="{% static 'img/trash.svg'%}" alt="deletar"></a></p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="item-error"> Nenhum tipo cadastrado!</p>
+                        {% endif %}
+                        <a href="{% url 'adicionar_guiche' %}" >
+                                <button class="button">Adiconar tipo</button>
+                            </a>
+                    </div>
+
+                    <div class="card">
+                            <h2>Câmpus</h2>
+                            {% if data.campus %}
+                                {% for campus in data.campus %}
+                                    <div class="item">
+                                        <p>{{ campus.nome }}</p>
+                                        <p><a href="{% url 'atualizar_campus' campus.id %}"><img class="icon-tools" src="{% static 'img/edit.svg'%}" alt="atualizar"></a></p>
+                                        <p><a href="{% url 'deletar_campus' campus.id %}"><img class="icon-tools" src="{% static 'img/trash.svg'%}" alt="deletar"></a></p>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="item-error"> Nenhum campus cadastrado!</p>
+                            {% endif %}
+                            <a href="{% url 'adicionar_campus' %}" >
+                                    <button class="button">Adiconar campus</button>
+                                </a>
+                        </div>
+</main>
+{% endblock body %}

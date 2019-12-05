@@ -1,62 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock title%}
+{% block title %}Principal{% endblock title%}
 {% block body %}
+{%load static%}
 <main class="col grid" id="grid" role="grid">
     <div class="row">
-        <div class="card left">
-            <h2>Categorias de Atendimento</h2>
-            {% if data.categoria %}
-                {% for categ in data.categoria %}
-                    <p class="item">
-                        {{ categ.nome }}
-                    </p>
-                {% endfor %}
-            {% else %}
-                <h3 class="item-error"> Nenhuma Categoria Cadastrada!</h3>
-            {% endif %}
-            <a href="{% url 'registrar_categoria' %}" >
-                    <button class="button">Adiconar Categoria</button>
-                </a>
-        </div>
-        <div class="card right">
-            <h2>Status de Atendimento</h2>
-            {% if data.status %}
-                {% for stat in data.status %}
-                    <p class="item">
-                        {{ stat.nome }}
-                    </p>
-                {% endfor %}
-            {% else %}
-                <h3 class="item-error"> Nenhum Status Cadastrado!</h3>
-            {% endif %}
-            <a href="{% url 'registrar_status' %}" >
-                <button class="button">Adiconar Status</button>
-            </a>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="card left">
-                <h2>Tipos de Atendimento</h2>
-                {% if data.tipo %}
-                    {% for tipo in data.tipo %}
-                        <p class="item">
-                            {{ tipo.nome }}
-                        </p>
-                    {% endfor %}
-                {% else %}
-                    <h3 class="item-error"> Nenhum Tipo Cadastrado!</h3>
-                {% endif %}
-                <a href="{% url 'registrar_tipo' %}" >
-                        <button class="button">Adiconar Tipo</button>
-                    </a>
-        </div>
-        <div class="card right">
-                <h2>Painel Atendimento</h2>
-                <h3>Ainda não implementado</h3>
-                <a href="{% url 'atendimento' %}" >
+        <div class="card-icons left">
+                <h2>Painel de Cadastro</h2>
+                <img class='svg' src="{% static 'img/browser.svg' %}" alt="Painel de Cadastro">
+                <a href="{% url 'registrar' %}" >
                         <button class="button">Ir para Painel</button>
                 </a>
+        </div>
+        <div class="card-icons right">
+            <h2>Painel Atendimento</h2>
+            <img class='svg' src="{% static 'img/attendance_panel.svg' %}" alt="Painel de Atendimento">
+            <a href="{% url 'atendimento' %}" >
+                    <button class="button">Ir para Painel</button>
+            </a>
         </div>
 
     </div>
