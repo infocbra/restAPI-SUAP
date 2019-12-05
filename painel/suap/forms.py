@@ -8,7 +8,6 @@ class CategoriaForm(forms.ModelForm):
             'nome'
         ]
 
-
 class TipoForm(forms.ModelForm):
     class Meta:
         model = models.Tipo
