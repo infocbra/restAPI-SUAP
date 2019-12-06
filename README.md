@@ -24,12 +24,17 @@
  *
 
 ### Requisitos:
-    - Python <= 3.6;
+    - Python >= 3.6;
     - Django; 
     - Django rest framework;
 
 ### Uso da API
+
+#### Sample code:
+    **link**: https://repl.it/@DanielBarr/Apitest
+
 #### Endpoints:
+
      /api/senha
         - POST
             - Cria uma nova senha;
@@ -54,7 +59,6 @@
         - POST
             - Acesso com o usuário já cadastrado para a geração do token.
     
-#### Parser Types Endpoints:
-    - x-www-former-urlencoded
+#### Postman Exemplo:
 
 ![Alt text](Prints/Postman_imagem.png?raw=true "Title")
