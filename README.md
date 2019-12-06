@@ -31,7 +31,7 @@
 ### Uso da API
 
 #### Sample code:
-    *link*: https://repl.it/@DanielBarr/Apitest
+*link*: https://repl.it/@DanielBarr/Apitest
 
 #### Endpoints:
 
