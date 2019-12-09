@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('registrar', views.RegistrarView.as_view(), name='registrar'),
     path('atendimento', views.AtendimentoView.as_view(), name='atendimento'),
+    path('docs', views.DocsView.as_view(), name='docs'),
 ]
 
 # Adicionando caminhos para CRUD Categorias

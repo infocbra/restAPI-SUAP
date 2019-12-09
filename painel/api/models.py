@@ -84,7 +84,6 @@ class Atendente(models.Model):
     def __str__(self):
         return self.Siape
 
-
 class Guiche(models.Model):
     num_guiche = models.CharField(max_length=10, null=False)
     status = models.BooleanField(verbose_name=_('Em atendimento'), default=False)
