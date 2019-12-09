@@ -33,6 +33,10 @@ class RegistrarView(TemplateView):
             }})
 
 
+class LoginView(TemplateView):
+    template_name = "public/login.html"
+
+
 class CategoriaCreate(CreateView):
     """Criando view para Categoria"""
     model = models.Categoria
@@ -173,5 +177,23 @@ class AtendimentoView(TemplateView):
     def get(self, request):
         return render(request, self.template_name)
 
-    def post(self, request):
+
+class ChamarNovaSenhaView(TemplateView):
+    """Criando view para Tipo"""
+    template_name = "public/atendimento.html"
+
+    def get(self, request):
+        senha = models.Senha.objects.filter(status=models.StatusSenha.objects.get(nome='Na fila')).order_by('hora_data')[0]
+        senha.status = models.StatusSenha.objects.get(nome ='Em atendimento')
+        senha.save()
+        return render(request, self.template_name, {'senha': senha})
+
+class ChamarSenhaNovamenteView(TemplateView):
+    """Criando view para Tipo"""
+    template_name = "public/atendimento.html"
+
+    def get(self, request, *args, **kwargs):
+        print(self.args)
+        #senha = models.Senha.objects.get(id=self.args['senha'])
         return render(request, self.template_name)
+

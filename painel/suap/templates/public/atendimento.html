@@ -7,18 +7,17 @@
 
     <div class="container col-align-items">
             <h1 class="">Senha</h1>
-        {% if data.senha %}
-                {% for senha in data.senha %}
+        {% if senha %}
                     <p class="senha">
                         {{ senha.senha }}
+                        {{ senha.id }}
                     </p>
-                {% endfor %}
             {% endif %}
             <div class="buttons">
-                <a href="{% url 'atendimento' %}" >
+                <a href="{% url 'chamar_senha_novamente' senha.id %}" >
                         <button class="button">Chamar senha novamente</button>
                     </a>
-                <a href="{% url 'atendimento' %}" >
+                <a href="{% url 'chamar_nova_senha' %}" >
                         <button class="button">Chamar nova senha</button>
                     </a>
             </div>
