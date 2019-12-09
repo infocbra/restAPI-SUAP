@@ -45,6 +45,13 @@ urlpatterns += [
 # Adicionando caminhos para CRUD Atendente
 urlpatterns += [
     path('atendente/adicionar', views.AtendenteCreate.as_view(), name='registrar_atendente'),
-    path('atendente/<int:pk>/atualizar/', views.AtendenteUpdate.as_view(), name='atualizar_guiche'),
-    path('atendente/<int:pk>/deletar/', views.AtendenteDelete.as_view(), name='deletar_guiche'),    
+    path('atendente/<int:pk>/atualizar/', views.AtendenteUpdate.as_view(), name='atualizar_atendente'),
+    path('atendente/<int:pk>/deletar/', views.AtendenteDelete.as_view(), name='deletar_atendente'),    
+]
+
+
+# Adicionando caminhas para Chamar nova Senha, Chamar senha novamente
+urlpatterns += [
+    path('senha/chamar/nova', views.ChamarNovaSenhaView.as_view(), name='chamar_nova_senha'),
+    path('senha/chamar/<int:pk>/', views.ChamarSenhaNovamenteView.as_view(), name='chamar_senha_novamente')
 ]
