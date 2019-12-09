@@ -32,6 +32,8 @@ class RegistrarView(TemplateView):
             'atendente': models.Atendente.objects.all()
             }})
 
+class DocsView(TemplateView):
+    template_name = "public/docs.html"
 
 class LoginView(TemplateView):
     template_name = "public/login.html"
@@ -176,7 +178,6 @@ class AtendimentoView(TemplateView):
 
     def get(self, request):
         return render(request, self.template_name)
-
 
 class ChamarNovaSenhaView(TemplateView):
     """Criando view para Tipo"""

@@ -1,85 +1,79 @@
 {% extends 'base.html' %}
-{% block title %}Registro{% endblock title%}
+{% block title %}API{% endblock title%}
 {% block body %}
-<main class="col grid" id="grid" role="grid">
-        <div class="card">
-            <h2>Categorias Atendimento</h2>
-            {% if data.categoria %}
-                {% for categ in data.categoria %}
-                    <p class="item">
-                        {{ categ.nome }}
-                    </p>
-                {% endfor %}
-            {% else %}
-                <h3 class="item-error"> Nenhuma Categoria Cadastrada!</h3>
-            {% endif %}
-            <a href="{% url 'registrar_categoria' %}" >
-                    <button class="button">Adiconar Categoria</button>
-                </a>
+    <div class="">
+        <div class="">
+            <h2>Documentação da API</h2>
         </div>
-        <div class="card">
-            <h2>Status Atendimento</h2>
-            {% if data.status %}
-                {% for stat in data.status %}
-                    <p class="item">
-                        {{ stat.nome }}
-                    </p>
-                {% endfor %}
-            {% else %}
-                <h3 class="item-error"> Nenhum Status Cadastrado!</h3>
-            {% endif %}
-            <a href="{% url 'registrar_status' %}" >
-                <button class="button">Adiconar Status</button>
-            </a>
-        </div>
+    <h3>Estrutura de Arquivos</h3>
+        <p>demo: Exemplo do uso do Django rest framework;</p>
+        <p>Modelo: Modelo Relacional com estrutura do banco de dados;</p>
+        <p>painel: projeto Django;</p>
+        <p>panelEnv: ambiente virtual python;</p>
+        <p>presentation: Apresentação powerpoint sobre API's.</p>
+    
+    <h3>Estrutura de Arquivos Django</h3>
+        <p></p>
+        <p></p>
+        <p></p>
 
-        <div class="card">
-                <h2>Tipos Atendimento</h2>
-                {% if data.tipo %}
-                    {% for tipo in data.tipo %}
-                        <p class="item">
-                            {{ tipo.nome }}
-                        </p>
-                    {% endfor %}
-                {% else %}
-                    <h3 class="item-error"> Nenhum Tipo Cadastrado!</h3>
-                {% endif %}
-                <a href="{% url 'registrar_tipo' %}" >
-                        <button class="button">Adiconar Tipo</button>
-                    </a>
-        </div>
+    <h3>Requisitos:</h3>
+        <p>Python >= 3.6</p>
+        <p>Django</p>
+        <p>Django rest framework</p>
 
-        <div class="card">
-                <h2>Guichês</h2>
-                {% if data.guiche %}
-                    {% for guiche in data.guiche %}
-                        <p class="item">
-                            {{ guiche.nome }}
-                        </p>
-                    {% endfor %}
-                {% else %}
-                    <h3 class="item-error"> Nenhum Guiche Cadastrado!</h3>
-                {% endif %}
-                <a href="{% url 'registrar_guiche' %}" >
-                        <button class="button">Adiconar Guiche</button>
-                    </a>
-        </div>
+    <h3>Uso da API</h3>
+    <h4>Código Simples</h4>
+    <p><a href="https://repl.it/@DanielBarr/Apitest">Link</a></p>
 
-        <div class="card">
-                <h2>Campi</h2>
-                {% if data.campus %}
-                    {% for campus in data.campus %}
-                        <p class="item">
-                            {{ campus.nome }}
-                        </p>
-                    {% endfor %}
-                {% else %}
-                    <h3 class="item-error"> Nenhum Campi Cadastrado!</h3>
-                {% endif %}
-                <a href="{% url 'registrar_guiche' %}" >
-                        <button class="button">Adiconar Campus</button>
-                    </a>
-        </div>
+    <h3>Endpoints</h3>
+        <hr>
+        <p>/api/senha</p>
+        <p> - POST </p>
+        <p>&emsp; - Cria uma nova senha</p>
+        <p>&emsp; obs: Necessita de uma categoria e um tipo.</p>
+        <p>- GET </p>
+        <p>&emsp; - Retorna todas as senhas existentes.</p>
+        <br>
 
-</main>
+        <hr>
+
+        <p>/api/senha/categoria</p>
+        <p>&ensp; - GET </p>
+        <p>&emsp; - Retorna todas as categorias existentes no banco.</p>
+        <br>
+
+        <hr>
+
+        <p>/api/senha/tipo</p>
+        <p>&ensp; - GET </p>
+        <p>&emsp; - Retorna todos os tipos existentes no banco.</p>
+        <br>
+
+        <hr>
+        <p>/api/user/create</p>
+        <p>&ensp; - POST </p>
+        <p>&emsp; - Cria um usuário e a senha para acesso ao token da API. </p>
+        <br>
+
+        <hr>
+        <p>/api/user/token</p>
+        <p>&ensp; - POST </p>
+        <p>&emsp; - Acesso com o usuário já cadastrado para a geração do token. </p>
+        <br>
+
+        <hr>
+
+        <h3>GitHub - Link do Projeto</h3>
+        <p><a href="https://github.com/dan-candeira/restAPI-SUAP">Acesse aqui!</a></p>
+
+
+
+
+
+
+    </div>
+
+
+
 {% endblock body %}
