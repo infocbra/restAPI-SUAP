@@ -193,7 +193,6 @@ class ChamarSenhaNovamenteView(TemplateView):
     template_name = "public/atendimento.html"
 
     def get(self, request, *args, **kwargs):
-        print(self.args)
-        #senha = models.Senha.objects.get(id=self.args['senha'])
-        return render(request, self.template_name)
+        senha = models.Senha.objects.get(id=self.kwargs['pk'])
+        return render(request, self.template_name, {'senha': senha})
 

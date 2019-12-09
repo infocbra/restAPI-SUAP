@@ -141,7 +141,7 @@ a{
 
 
 .card h2{
-    text-align: left ;
+    text-align: left;
 }
 
 .icon-tools{
@@ -157,4 +157,19 @@ a{
 
 .menu-item{
     font-size: 1.1em;
+}
+
+.senha{
+    font-size: 8em;
+}
+
+.painel-senha{
+    height: 25em;
+    width: 30em;
+    margin-top: 5em;
+    border-radius: .8em;
+    box-shadow: 2px 2px 10px rgba(99, 110, 114,0.5);
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
 }

@@ -5,22 +5,25 @@
 {% block body %}
 <main class="col grid" id="grid" role="grid">
 
-    <div class="container col-align-items">
+    <div class="painel-senha col-align-items">
             <h1 class="">Senha</h1>
         {% if senha %}
                     <p class="senha">
                         {{ senha.senha }}
-                        {{ senha.id }}
                     </p>
-            {% endif %}
-            <div class="buttons">
-                <a href="{% url 'chamar_senha_novamente' senha.id %}" >
-                        <button class="button">Chamar senha novamente</button>
-                    </a>
-                <a href="{% url 'chamar_nova_senha' %}" >
-                        <button class="button">Chamar nova senha</button>
-                    </a>
-            </div>
+        {% endif %}
+</div>
+<div class="buttons row">
+        {% if senha %}
+        <a href="{% url 'chamar_senha_novamente' senha.id %}" >
+            <button class="button">Chamar senha novamente</button>
+        </a>
+        </p>
+        {% endif %}
+    
+    <a href="{% url 'chamar_nova_senha' %}" >
+            <button class="button">Chamar nova senha</button>
+        </a>
 </div>
     </main>
 

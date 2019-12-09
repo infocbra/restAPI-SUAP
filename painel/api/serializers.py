@@ -22,7 +22,6 @@ class SenhaSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """Create a new user with encripted password and return it"""
         senha = Senha(tipo = validated_data['tipo'], categoria= validated_data['categoria'], status= StatusSenha.objects.get(nome='Na fila'), senha= nova_senha(validated_data))
-            
         senha.save()
         return senha
 
