@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import FieldError
+from django.conf import settings
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
@@ -82,7 +84,7 @@ class Atendente(models.Model):
     nome = models.CharField(max_length=30, null=False)
 
     def __str__(self):
-        return self.Siape
+        return self.siape
 
 class Guiche(models.Model):
     num_guiche = models.CharField(max_length=10, null=False)

@@ -58,8 +58,8 @@
     /api/user/token 
         - POST
             - Acesso com o usuário já cadastrado para a geração do token.
-    
-<<<<<<< HEAD
+
 #### Parser Types Endpoints:
     - x-www-former-urlencoded
 ![Alt text](Prints/Postman_imagem.png?raw=true "Title")
+

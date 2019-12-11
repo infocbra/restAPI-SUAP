@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 import api.models as models 
 
 # forms 
-import suap.forms as forms 
+from django import forms
 
 
 class IndexView(TemplateView):
@@ -154,7 +154,6 @@ class AtendenteCreate(CreateView):
     """Criando view para Campus"""
     model = models.Atendente
     template_name = "atendente/novo_atendente.html"
-    fields = ['nome', 'siape']
     success_url = reverse_lazy('registrar')
 
 
@@ -176,17 +175,19 @@ class AtendimentoView(TemplateView):
     """Criando view para Tipo"""
     template_name = "public/atendimento.html"
 
-    def get(self, request):
-        return render(request, self.template_name)
+
 
 class ChamarNovaSenhaView(TemplateView):
     """Criando view para Tipo"""
     template_name = "public/atendimento.html"
 
     def get(self, request):
-        senha = models.Senha.objects.filter(status=models.StatusSenha.objects.get(nome='Na fila')).order_by('hora_data')[0]
-        senha.status = models.StatusSenha.objects.get(nome ='Em atendimento')
-        senha.save()
+        if models.Senha.objects.filter(status=models.StatusSenha.objects.get(nome='Na fila')):
+            senha = models.Senha.objects.filter(status=models.StatusSenha.objects.get(nome='Na fila')).order_by('hora_data')[0]
+            senha.status = models.StatusSenha.objects.get(nome ='Em atendimento')
+            senha.save()
+        else:
+            senha = {'msg':'Não há senhas na fila'}
         return render(request, self.template_name, {'senha': senha})
 
 class ChamarSenhaNovamenteView(TemplateView):
@@ -194,6 +195,10 @@ class ChamarSenhaNovamenteView(TemplateView):
     template_name = "public/atendimento.html"
 
     def get(self, request, *args, **kwargs):
-        senha = models.Senha.objects.get(id=self.kwargs['pk'])
+        if self.kwargs['pk'][1] != 0:
+            senha = models.Senha.objects.get(id=self.kwargs['pk'])
+        else:
+            senha = {'msg':'Não há senhas na fila'}
+        
         return render(request, self.template_name, {'senha': senha})
 

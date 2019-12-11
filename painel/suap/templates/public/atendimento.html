@@ -7,18 +7,22 @@
 
     <div class="painel-senha col-align-items">
             <h1 class="">Senha</h1>
-        {% if senha %}
-                    <p class="senha">
-                        {{ senha.senha }}
+        {% if senha.msg %}
+                    <p class="msg">
+                        {{ senha.msg }}
                     </p>
+        {% else%}
+        <p class="senha">
+                {{ senha.senha }}
+            </p>
         {% endif %}
+
 </div>
 <div class="buttons row">
-        {% if senha %}
+        {% if senha.msg is False %}
         <a href="{% url 'chamar_senha_novamente' senha.id %}" >
             <button class="button">Chamar senha novamente</button>
         </a>
-        </p>
         {% endif %}
     
     <a href="{% url 'chamar_nova_senha' %}" >
