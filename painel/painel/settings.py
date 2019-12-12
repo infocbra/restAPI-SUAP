@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&z*fll5k4(8q=_-afd5(blqanmb5vsbv&2t^i#0xnx#=ufr!42'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['danielb.pythonanywhere.com']
 
 
 # Application definition
@@ -117,7 +117,7 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC-3'
 
 USE_I18N = True
 

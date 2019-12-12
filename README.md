@@ -7,6 +7,8 @@
  **Alunos** : Daniel Barros e Levi Alves
 
  **Link para o sistema** : http://danielb.pythonanywhere.com/
+
+ **Link de utilização do sistema** : https://youtu.be/2bXerD3d5hc
  
  **Objetivo do Projeto**:
  Implementar API e telas para controle de senhas.
@@ -17,11 +19,6 @@
  * painel: projeto Django;
  * panelEnv: ambiente virtual python;
  * presentation: Apresentação powerpoint sobre API's.
-
-### Estrutura de Arquivos Django
- * 
- *
- *
 
 ### Requisitos:
     - Python >= 3.6;

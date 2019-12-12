@@ -17,7 +17,7 @@ class SenhaSerializer(serializers.ModelSerializer):
         model = Senha
         fields = ('id', 'senha', 'tipo', 'categoria', 
                   'status', 'hora_data',)
-        read_only_fields = ('id', 'senha','hora_data', 'status',)
+        read_only_fields = ('id', 'senha', 'status',)
     
     def create(self, validated_data):
         """Create a new user with encripted password and return it"""

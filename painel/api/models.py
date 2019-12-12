@@ -66,7 +66,7 @@ class Senha(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     status = models.ForeignKey(StatusSenha, on_delete=models.CASCADE)
     senha = models.CharField(max_length = 255, null=False)
-    hora_data = models.DateTimeField(default=timezone.now, blank=True)
+    hora_data = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.senha, self.hora_data

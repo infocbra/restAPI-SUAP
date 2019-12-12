@@ -19,7 +19,7 @@
 
 </div>
 <div class="buttons row">
-        {% if senha.msg is False %}
+        {% if not senha.msg %}
         <a href="{% url 'chamar_senha_novamente' senha.id %}" >
             <button class="button">Chamar senha novamente</button>
         </a>
