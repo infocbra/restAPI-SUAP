@@ -6,6 +6,10 @@
 
  **Alunos** : Daniel Barros e Levi Alves
 
+ **Link para o sistema** : http://danielb.pythonanywhere.com/
+
+ **Link de utilização do sistema** : https://youtu.be/2bXerD3d5hc
+ 
  **Objetivo do Projeto**:
  Implementar API e telas para controle de senhas.
 
@@ -16,18 +20,18 @@
  * panelEnv: ambiente virtual python;
  * presentation: Apresentação powerpoint sobre API's.
 
-### Estrutura de Arquivos Django
- * 
- *
- *
-
 ### Requisitos:
-    - Python <= 3.6;
+    - Python >= 3.6;
     - Django; 
     - Django rest framework;
 
 ### Uso da API
+
+#### Sample code:
+**link**: https://repl.it/@DanielBarr/Apitest
+
 #### Endpoints:
+
      /api/senha
         - POST
             - Cria uma nova senha;
@@ -36,10 +40,23 @@
         - GET
             - Retorna todas as senhas existentes.
 
-     /api/categoria
+     /api/senha/categoria
         - GET
             - Retorna todas as categorias existentes no banco.
 
-     /api/tipo 
+     /api/senha/tipo 
         - GET
             - Retorna todos os tipos existentes no banco.
+
+    /api/user/create 
+        - POST
+            - Cria um usuário e a senha para acesso ao token da API.
+    
+    /api/user/token 
+        - POST
+            - Acesso com o usuário já cadastrado para a geração do token.
+
+#### Parser Types Endpoints:
+    - x-www-former-urlencoded
+![Alt text](Prints/Postman_imagem.png?raw=true "Title")
+

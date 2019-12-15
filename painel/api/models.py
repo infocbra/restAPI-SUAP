@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import FieldError
+from django.conf import settings
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
@@ -64,7 +66,7 @@ class Senha(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     status = models.ForeignKey(StatusSenha, on_delete=models.CASCADE)
     senha = models.CharField(max_length = 255, null=False)
-    hora_data = models.DateTimeField(default=timezone.now, blank=True)
+    hora_data = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.senha, self.hora_data
@@ -82,8 +84,7 @@ class Atendente(models.Model):
     nome = models.CharField(max_length=30, null=False)
 
     def __str__(self):
-        return self.Siape
-
+        return self.siape
 
 class Guiche(models.Model):
     num_guiche = models.CharField(max_length=10, null=False)
